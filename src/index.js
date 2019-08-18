@@ -80,6 +80,8 @@ async function Main() {
         page = await browser.pages();
         if (page.length > 0) {
             page = page[0];
+            const override = Object.assign(page.viewport(), {width: 1920, height: 1080});
+        	await page.setViewport(override);
             if (argv.proxyURI) {
                 await page.authenticate({ username: argv.username, password: argv.password });
             }
