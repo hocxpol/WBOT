@@ -22,9 +22,12 @@ this.getRevNumber = function () {
             .then(res => res.json())
             .then(json => {
                 //console.log(json);
-                var betaChannel = json[0].versions.find(x => x.channel == "canary").branch_base_position;
+                var betaChannel = json[0].versions.find(x => x.channel == "canary");
                 resolve("666595");
-            });
+            })
+        .catch(function(e) {
+			console.log(e);
+		});
     })
 
 }
